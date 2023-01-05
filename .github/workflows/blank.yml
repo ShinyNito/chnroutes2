@@ -2,8 +2,8 @@
 name: Build chnroutes2
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "30 21 * * *"
+  #schedule:
+    #- cron: "30 21 * * *"
   push:
     branches:
       - main
