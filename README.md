@@ -4,7 +4,7 @@
 
 数据源来自于 [misakaio/chnroutes2](https://github.com/misakaio/chnroutes2)
 
-每天定时检查上游是否更新
+每天晚上九点半定时检查上游是否更新
 
 直接下载: https://raw.githubusercontent.com/ShinyNito/chnroutes2/release/routes4.conf
 
