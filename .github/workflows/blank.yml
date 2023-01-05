@@ -24,8 +24,9 @@ jobs:
     steps:
       - name: Compare latest tags and set variables
         run: |
-          upstreamLatestTag=$(curl -sSL --connect-timeout 5 -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/misakaio/chnroutes2/commits | grep "\"date\""|  awk 'NR == 1 { print }' | date +%Y%m%d%H%M%S | cut -d\" -f4 )
+          upstreamLatestTagStr=$(curl -sSL --connect-timeout 5 -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/misakaio/chnroutes2/commits | grep "\"date\""|  awk 'NR == 1 { print }' | cut -d\" -f4 )
           thisLatestTag=$(curl -sSL --connect-timeout 5 -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${{ github.repository }}/releases/latest | grep "tag_name" | cut -d\" -f4)
+          upstreamLatestTag=$(date +%Y%m%d%H%M%S  -d $upstreamLatestTagStr)
           if [[ $upstreamLatestTag != $thisLatestTag ]]; then
             echo "NeedToSync=true" >> $GITHUB_ENV
           fi
